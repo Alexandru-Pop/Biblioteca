@@ -140,7 +140,7 @@ namespace Biblioteca
                 MessageBox.Show("Inregistrarea a fost salvata cu succes!");
                 try
                 {
-                    //instantiem Customer entity
+                    //Instantiem Customer Entity
                     customer = new Customer()
                     {
                         CustId = int.Parse(custIdTextBox.Text.Trim()),
@@ -150,11 +150,11 @@ namespace Biblioteca
                         University = universityTextBox.Text.Trim()
                     };
 
-                    //adaugam entitatea nou creata in context
+                    //Adaugam Entitatea nou creata in context
                     ctx.Customers.Add(customer);
                     customerViewSource.View.Refresh();
 
-                    //salvam modificarile
+                    //Salvam modificarile
                     ctx.SaveChanges();
                 }
                 catch (DataException ex)
@@ -173,7 +173,7 @@ namespace Biblioteca
                     customer.Age = ageTextBox.Text.Trim();
                     customer.University = universityTextBox.Text.Trim();
 
-                    //salvam modificarile
+                    //Salvam modificarile
                     ctx.SaveChanges();
                 }
                 catch (DataException ex)
@@ -183,7 +183,7 @@ namespace Biblioteca
 
                 customerViewSource.View.Refresh();
 
-                // pozitionarea pe item-ul curent
+                // Pozitionam pe item-ul curent
                 customerViewSource.View.MoveCurrentTo(customer);
             }
             else if (action == ActionState.Delete)
@@ -230,7 +230,7 @@ namespace Biblioteca
                 MessageBox.Show("Inregistrarea a fost salvata cu succes!");
                 try
                 {
-                    //instantiem Inventory entity
+                    //Instantiem Inventory Entity
                     inventory = new Inventory()
                     {
                         BookId = int.Parse(bookIdTextBox.Text.Trim()),
@@ -240,11 +240,11 @@ namespace Biblioteca
                         PublishingYear = publishingyearTextBox.Text.Trim()
                     };
 
-                    //adaugam entitatea nou creata in context
+                    //Adaugam Entitatea nou creata in context
                     ctx.Inventories.Add(inventory);
                     inventoryViewSource.View.Refresh();
 
-                    //salvam modificarile
+                    //Salvam modificarile
                     ctx.SaveChanges();
                 }
                 catch (DataException ex)
@@ -264,7 +264,7 @@ namespace Biblioteca
                     inventory.Author = authorTextBox.Text.Trim();
                     inventory.PublishingYear = publishingyearTextBox.Text.Trim();
 
-                    //salvam modificarile
+                    //Salvam modificarile
                     ctx.SaveChanges();
                 }
                 catch (DataException ex)
@@ -275,7 +275,7 @@ namespace Biblioteca
                 inventoryViewSource.View.Refresh();
 
                 inventoryViewSource.View.MoveCurrentTo(inventory);
-                // pozitionarea pe item-ul curent
+                // Pozitionam pe item-ul curent
             }
             else if (action == ActionState.Delete)
             {
@@ -321,17 +321,17 @@ namespace Biblioteca
                 {
                     Customer customer = (Customer)cmbCustomers.SelectedItem;
                     Inventory inventory = (Inventory)cmbInventory.SelectedItem;
-                    //instantiem Order entity
+                    //Instantiem Order Entity
                     order = new Order()
                     {
 
                         CustId = customer.CustId,
                         BookId = inventory.BookId
                     };
-                    //adaugam entitatea nou creata in context
+                    //Adaugam Entitatea nou creata in context
                     ctx.Orders.Add(order);
                     customerOrdersViewSource.View.Refresh();
-                    //salvam modificarile
+                    //Salvam modificarile
                     ctx.SaveChanges();
                 }
                 catch (DataException ex)
@@ -351,7 +351,7 @@ namespace Biblioteca
                     {
                         editedOrder.CustId = Int32.Parse(cmbCustomers.SelectedValue.ToString());
                         editedOrder.BookId = Convert.ToInt32(cmbInventory.SelectedValue.ToString());
-                        //salvam modificarile
+                        //Salvam modificarile
                         ctx.SaveChanges();
                     }
                 }
@@ -360,7 +360,7 @@ namespace Biblioteca
                     MessageBox.Show(ex.Message);
                 }
                 BindDataGrid();
-                // pozitionarea pe item-ul curent
+                // Pozitionam pe item-ul curent
                 customerViewSource.View.MoveCurrentTo(selectedOrder);
             }
             else if (action == ActionState.Delete)
@@ -408,7 +408,7 @@ namespace Biblioteca
             firstNameValidationBinding.Mode = BindingMode.TwoWay;
             firstNameValidationBinding.UpdateSourceTrigger =
            UpdateSourceTrigger.PropertyChanged;
-            //string required
+            //Este necesar string-ul
             firstNameValidationBinding.ValidationRules.Add(new StringNotEmpty());
             firstNameTextBox.SetBinding(TextBox.TextProperty,
            firstNameValidationBinding);
@@ -419,10 +419,10 @@ namespace Biblioteca
             lastNameValidationBinding.Mode = BindingMode.TwoWay;
             lastNameValidationBinding.UpdateSourceTrigger =
            UpdateSourceTrigger.PropertyChanged;
-            //string min length validator
+            //Validator de lungime mine a string-ului
             lastNameValidationBinding.ValidationRules.Add(new StringMinLengthValidator());
             lastNameTextBox.SetBinding(TextBox.TextProperty,
-           lastNameValidationBinding); //setare binding nou
+           lastNameValidationBinding); //Setare binding nou
         }
 
     }
