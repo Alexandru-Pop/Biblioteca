@@ -60,18 +60,15 @@ namespace Biblioteca
 
 
             customerOrdersViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("customerOrdersViewSource")));
-            //customerOrdersViewSource.Source = ctx.Orders.Local;
 
             ctx.Customers.Load();
             ctx.Orders.Load();
             ctx.Inventories.Load();
 
             cmbCustomers.ItemsSource = ctx.Customers.Local;
-            //cmbCustomers.DisplayMemberPath = "FirstName";
             cmbCustomers.SelectedValuePath = "CustId";
 
             cmbInventory.ItemsSource = ctx.Inventories.Local;
-            //cmbInventory.DisplayMemberPath = "BookTitle";
             cmbInventory.SelectedValuePath = "BookId";
 
             BindDataGrid();
@@ -132,22 +129,25 @@ namespace Biblioteca
         }
 
 
-        // AICI E PENTRU CUSTOMERS
+        // Codul pentru Customers
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("now saving");
+            MessageBox.Show("Se salveaza modificarea solicitata. Va rugam asteptati!");
             Customer customer = null;
             if (action == ActionState.New)
             {
-                MessageBox.Show("new");
+                MessageBox.Show("Inregistrarea a fost salvata cu succes!");
                 try
                 {
                     //instantiem Customer entity
                     customer = new Customer()
                     {
+                        CustId = int.Parse(custIdTextBox.Text.Trim()),
                         FirstName = firstNameTextBox.Text.Trim(),
-                        LastName = lastNameTextBox.Text.Trim()
+                        LastName = lastNameTextBox.Text.Trim(),
+                        Age = ageTextBox.Text.Trim(),
+                        University = universityTextBox.Text.Trim()
                     };
 
                     //adaugam entitatea nou creata in context
@@ -164,12 +164,14 @@ namespace Biblioteca
             }
             else if (action == ActionState.Edit)
             {
-                MessageBox.Show("edit");
+                MessageBox.Show("Se editeaza inregistrarea.");
                 try
                 {
                     customer = (Customer)customerDataGrid.SelectedItem;
                     customer.FirstName = firstNameTextBox.Text.Trim();
                     customer.LastName = lastNameTextBox.Text.Trim();
+                    customer.Age = ageTextBox.Text.Trim();
+                    customer.University = universityTextBox.Text.Trim();
 
                     //salvam modificarile
                     ctx.SaveChanges();
@@ -186,7 +188,7 @@ namespace Biblioteca
             }
             else if (action == ActionState.Delete)
             {
-                MessageBox.Show("delete");
+                MessageBox.Show("Inregistrarea a fost stearsa cu succes!");
                 try
                 {
                     customer = (Customer)customerDataGrid.SelectedItem;
@@ -216,16 +218,16 @@ namespace Biblioteca
 
 
 
-        // AICI E PENTRU INVENTORY
+        // Codul pentru Inventory
 
 
         private void btnSave1_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("now saving");
+            MessageBox.Show("Se salveaza modificarea solicitata. Va rugam asteptati!");
             Inventory inventory = null;
             if (action == ActionState.New)
             {
-                MessageBox.Show("New");
+                MessageBox.Show("Inregistrarea a fost salvata cu succes!");
                 try
                 {
                     //instantiem Inventory entity
@@ -233,7 +235,9 @@ namespace Biblioteca
                     {
                         BookId = int.Parse(bookIdTextBox.Text.Trim()),
                         BookTitle = booktitleTextBox.Text.Trim(),
-                        BookFormat = bookformatTextBox.Text.Trim()
+                        BookFormat = bookformatTextBox.Text.Trim(),
+                        Author = authorTextBox.Text.Trim(),
+                        PublishingYear = publishingyearTextBox.Text.Trim()
                     };
 
                     //adaugam entitatea nou creata in context
@@ -250,13 +254,15 @@ namespace Biblioteca
             }
             else if (action == ActionState.Edit)
             {
-                MessageBox.Show("Edit");
+                MessageBox.Show("Se editeaza inregistrarea.");
                 try
                 {
                     inventory = (Inventory)inventoryDataGrid.SelectedItem;
                     inventory.BookId = int.Parse(bookIdTextBox.Text.Trim());
                     inventory.BookTitle = booktitleTextBox.Text.Trim();
                     inventory.BookFormat = bookformatTextBox.Text.Trim();
+                    inventory.Author = authorTextBox.Text.Trim();
+                    inventory.PublishingYear = publishingyearTextBox.Text.Trim();
 
                     //salvam modificarile
                     ctx.SaveChanges();
@@ -273,7 +279,7 @@ namespace Biblioteca
             }
             else if (action == ActionState.Delete)
             {
-                MessageBox.Show("Delete");
+                MessageBox.Show("Inregistrarea a fost stearsa cu succes!");
                 try
                 {
                     inventory = (Inventory)inventoryDataGrid.SelectedItem;
@@ -301,7 +307,7 @@ namespace Biblioteca
         }
 
 
-        // AICI E PENTRU ORDERS
+        // Codul pentru Orders
 
 
 
@@ -310,6 +316,7 @@ namespace Biblioteca
             Order order = null;
             if (action == ActionState.New)
             {
+                MessageBox.Show("Comanda a fost inregistrata cu succes. Pentru a o vedea va rugam reporniti programul!");
                 try
                 {
                     Customer customer = (Customer)cmbCustomers.SelectedItem;
@@ -367,7 +374,7 @@ namespace Biblioteca
                     {
                         ctx.Orders.Remove(deletedOrder);
                         ctx.SaveChanges();
-                        MessageBox.Show("Order Deleted Successfully", "Message");
+                        MessageBox.Show("Comanda a fost scoasa din inregistrari cu succes!");
                         BindDataGrid();
                     }
                 }

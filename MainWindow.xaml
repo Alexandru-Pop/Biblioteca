@@ -36,7 +36,7 @@
 
 
 
-            <TabItem Header="Customers" Margin="-2,-2,-124,0">
+            <TabItem Header="Customers" Margin="-2,-2,-92,0">
                 <TabItem.Background>
                     <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
                 </TabItem.Background>
@@ -49,9 +49,11 @@
                             <ImageBrush ImageSource="pngtree-pure-color-watercolor-graffiti-gradient-background-board-design-board-design-image_66713.jpg"/>
                         </DataGrid.Background>
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="custIdColumn" Binding="{Binding CustId}" Header="Customer Id" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding FirstName}" Header="First Name" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Last Name" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="custIdColumn" Binding="{Binding CustId}" Header="Customer Id" Width="Auto"/>
+                            <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding FirstName}" Header="First Name" Width="Auto"/>
+                            <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Last Name" Width="Auto"/>
+                            <DataGridTextColumn x:Name="ageColumn" Binding="{Binding Age}" Header="Age" Width="Auto"/>
+                            <DataGridTextColumn x:Name="universityColumn" Binding="{Binding University}" Header="University" Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="54,63,0,0" VerticalAlignment="Top">
@@ -64,13 +66,15 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <Label Content="Customer Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center"/>
 
-                        <TextBox x:Name="custIdTextBox"  IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="0" Text="{Binding CustId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2">
+                        <TextBox x:Name="custIdTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="0" Text="{Binding CustId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" Grid.ColumnSpan="2">
                             <TextBox.Background>
-                                <ImageBrush ImageSource="hand-painted-watercolor-background-with-sky-clouds-shape_24972-1095.jpg"/>
+                                <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
                             </TextBox.Background>
                         </TextBox>
 
@@ -86,6 +90,24 @@
                         <Label Content="Last Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="2" VerticalAlignment="Center"/>
                         <TextBox x:Name="lastNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="2" 
                                  Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"
+                                 Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}" Grid.ColumnSpan="2">
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Age:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <TextBox x:Name="ageTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="3" 
+                                 Text="{Binding Age, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" 
+                                 Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}" Grid.ColumnSpan="2">
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="University:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="universityTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="4" 
+                                 Text="{Binding University, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" 
                                  Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource textBoxInError}" Grid.ColumnSpan="2">
                             <TextBox.Background>
                                 <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
@@ -145,7 +167,7 @@
 
 
 
-            <TabItem Header="Inventory" Margin="124,-2,-253,0">
+            <TabItem Header="Inventory" Margin="92,-2,-182,0">
                 <TabItem.Background>
                     <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
                 </TabItem.Background>
@@ -165,9 +187,11 @@
                             <ImageBrush ImageSource="pngtree-pure-color-watercolor-graffiti-gradient-background-board-design-board-design-image_66713.jpg"/>
                         </DataGrid.Background>
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="bookIdColumn" Binding="{Binding BookId}" Header="Book Id" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="bookformatColumn" Binding="{Binding BookFormat}" Header="Book Format" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="booktitleColumn" Binding="{Binding BookTitle}" Header="Book Title" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="bookIdColumn" Binding="{Binding BookId}" Header="Book Id" Width="Auto"/>
+                            <DataGridTextColumn x:Name="bookformatColumn" Binding="{Binding BookFormat}" Header="Book Format" Width="Auto"/>
+                            <DataGridTextColumn x:Name="booktitleColumn" Binding="{Binding BookTitle}" Header="Book Title" Width="Auto"/>
+                            <DataGridTextColumn x:Name="authorColumn" Binding="{Binding Author}" Header="Author" Width="Auto"/>
+                            <DataGridTextColumn x:Name="publishingyearColumn" Binding="{Binding PublishingYear}" Header="Publishing Year" Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Grid x:Name="grid2" HorizontalAlignment="Left" Margin="54,63,0,0" VerticalAlignment="Top" Grid.ColumnSpan="4">
@@ -179,6 +203,8 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Label Content="Book Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                         <TextBox x:Name="bookIdTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding BookId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120">
@@ -186,18 +212,35 @@
                                 <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
                             </TextBox.Background>
                         </TextBox>
+                        
                         <Label Content="BookFormat:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
                         <TextBox x:Name="bookformatTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding BookFormat, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120">
                             <TextBox.Background>
                                 <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
                             </TextBox.Background>
                         </TextBox>
+                        
                         <Label Content="BookTitle:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
                         <TextBox x:Name="booktitleTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding BookTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120">
                             <TextBox.Background>
                                 <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
                             </TextBox.Background>
                         </TextBox>
+
+                        <Label Content="Author:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <TextBox x:Name="authorTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding Author, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120">
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
+                            </TextBox.Background>
+                        </TextBox>
+
+                        <Label Content="Publishing Year:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="publishingyearTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding PublishingYear, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120">
+                            <TextBox.Background>
+                                <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
+                            </TextBox.Background>
+                        </TextBox>
+
                     </Grid>
                     <Button x:Name="btnNew1" Content="New" Click="btnNew1_Click" HorizontalAlignment="Left" Margin="65,178,0,0" VerticalAlignment="Top" Width="75" Height="25" Grid.Column="3">
                         <Button.Background>
@@ -235,7 +278,7 @@
 
 
 
-            <TabItem Header="Orders" Margin="253,-2,-370,0">
+            <TabItem Header="Orders" Margin="180,-2,-270,0">
                 <TabItem.Background>
                     <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
                 </TabItem.Background>
@@ -295,10 +338,10 @@
                             <ImageBrush ImageSource="pngtree-pure-color-watercolor-graffiti-gradient-background-board-design-board-design-image_66713.jpg"/>
                         </DataGrid.Background>
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding FirstName}" Header="First Name" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding LastName}" Header="Last Name" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="BookTitleColumn" Binding="{Binding BookTitle}" Header="Book Title" Width="SizeToHeader"/>
-                            <DataGridTextColumn x:Name="BookFormatColumn" Binding="{Binding BookFormat}" Header="Book Format" Width="SizeToHeader"/>
+                            <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding FirstName}" Header="First Name" Width="Auto"/>
+                            <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding LastName}" Header="Last Name" Width="Auto"/>
+                            <DataGridTextColumn x:Name="BookTitleColumn" Binding="{Binding BookTitle}" Header="Book Title" Width="Auto"/>
+                            <DataGridTextColumn x:Name="BookFormatColumn" Binding="{Binding BookFormat}" Header="Book Format" Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -332,6 +375,47 @@
                             <ImageBrush ImageSource="hand-painted-watercolor-background-with-sky-clouds-shape_24972-1095.jpg"/>
                         </Button.Background>
                     </Button>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="About" Margin="270,-2,-365,0">
+                <TabItem.Background>
+                    <ImageBrush ImageSource="Minimalist-Crumpled-Paper-Simple-Background-Image.jpg"/>
+                </TabItem.Background>
+                <Grid DataContext="{StaticResource customerOrdersViewSource}">
+                    <Grid.Background>
+                        <ImageBrush ImageSource="top-10-books-every-college-student-read-1024x640.jpeg"/>
+                    </Grid.Background>
+                    <Label Content="Biblioteca Online" HorizontalAlignment="Left" Margin="308,74,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="4.017"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label Content="Proiect realizat de Pop Alexandru" HorizontalAlignment="Left" Margin="240,184,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="2.274"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label Content="Informatica Economica - ID, Anul III, Semigrupa 5" HorizontalAlignment="Left" Margin="153,244,0,0" VerticalAlignment="Top" FontSize="16" FontStyle="Italic" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="6.511"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
                 </Grid>
             </TabItem>
         </TabControl>
