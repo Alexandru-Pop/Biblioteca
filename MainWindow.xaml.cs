@@ -398,9 +398,46 @@ namespace Biblioteca
             customerOrdersViewSource.View.MoveCurrentToPrevious();
         }
 
+        //In cele ce urmeaza se regaseste codul de validare a datelor de intrare
 
         private void SetValidationBinding()
         {
+            //Vom incepe cu validarea campurilor Age si BookFormat (string-urile introduse nu pot fi nule)
+
+            //Validarea campului Age
+
+            Binding ageValidationBinding = new Binding();
+            ageValidationBinding.Source = customerViewSource;
+            ageValidationBinding.Path = new PropertyPath("Age");
+            ageValidationBinding.NotifyOnValidationError = true;
+            ageValidationBinding.Mode = BindingMode.TwoWay;
+            ageValidationBinding.UpdateSourceTrigger =
+           UpdateSourceTrigger.PropertyChanged;
+            //Este necesar string-ul sa nu fie nul
+            ageValidationBinding.ValidationRules.Add(new StringNotEmpty());
+            ageTextBox.SetBinding(TextBox.TextProperty,
+           ageValidationBinding);
+
+            //Validarea campului BookFormat
+
+            Binding bookFormatValidationBinding = new Binding();
+            bookFormatValidationBinding.Source = inventoryViewSource;
+            bookFormatValidationBinding.Path = new PropertyPath("BookFormat");
+            bookFormatValidationBinding.NotifyOnValidationError = true;
+            bookFormatValidationBinding.Mode = BindingMode.TwoWay;
+            bookFormatValidationBinding.UpdateSourceTrigger =
+           UpdateSourceTrigger.PropertyChanged;
+            //Este necesar string-ul sa nu fie nul
+            bookFormatValidationBinding.ValidationRules.Add(new StringNotEmpty());
+            bookformatTextBox.SetBinding(TextBox.TextProperty,
+           bookFormatValidationBinding);
+
+
+
+            //Continuam cu validarea campurilor FirstName, LastName, University, BookTitle, Author, Publishing Year (string-urile introduse trebuie sa aiba minim 4 caractere)
+
+            //Validarea campului FirstName
+
             Binding firstNameValidationBinding = new Binding();
             firstNameValidationBinding.Source = customerViewSource;
             firstNameValidationBinding.Path = new PropertyPath("FirstName");
@@ -408,10 +445,13 @@ namespace Biblioteca
             firstNameValidationBinding.Mode = BindingMode.TwoWay;
             firstNameValidationBinding.UpdateSourceTrigger =
            UpdateSourceTrigger.PropertyChanged;
-            //Este necesar string-ul
-            firstNameValidationBinding.ValidationRules.Add(new StringNotEmpty());
+            //Este necesar ca string-ul sa aiba minim 4 caractere
+            firstNameValidationBinding.ValidationRules.Add(new StringMinLengthValidator());
             firstNameTextBox.SetBinding(TextBox.TextProperty,
            firstNameValidationBinding);
+
+            //Validarea campului LastName
+
             Binding lastNameValidationBinding = new Binding();
             lastNameValidationBinding.Source = customerViewSource;
             lastNameValidationBinding.Path = new PropertyPath("LastName");
@@ -419,10 +459,66 @@ namespace Biblioteca
             lastNameValidationBinding.Mode = BindingMode.TwoWay;
             lastNameValidationBinding.UpdateSourceTrigger =
            UpdateSourceTrigger.PropertyChanged;
-            //Validator de lungime mine a string-ului
+            //Este necesar ca string-ul sa aiba minim 4 caractere
             lastNameValidationBinding.ValidationRules.Add(new StringMinLengthValidator());
             lastNameTextBox.SetBinding(TextBox.TextProperty,
-           lastNameValidationBinding); //Setare binding nou
+           lastNameValidationBinding);
+
+            //Validarea campului University
+
+            Binding universityValidationBinding = new Binding();
+            universityValidationBinding.Source = customerViewSource;
+            universityValidationBinding.Path = new PropertyPath("University");
+            universityValidationBinding.NotifyOnValidationError = true;
+            universityValidationBinding.Mode = BindingMode.TwoWay;
+            universityValidationBinding.UpdateSourceTrigger =
+           UpdateSourceTrigger.PropertyChanged;
+            //Este necesar ca string-ul sa aiba minim 4 caractere
+            universityValidationBinding.ValidationRules.Add(new StringMinLengthValidator());
+            universityTextBox.SetBinding(TextBox.TextProperty,
+           universityValidationBinding);
+
+            //Validarea campului BookTitle
+
+            Binding bookTitleValidationBinding = new Binding();
+            bookTitleValidationBinding.Source = inventoryViewSource;
+            bookTitleValidationBinding.Path = new PropertyPath("BookTitle");
+            bookTitleValidationBinding.NotifyOnValidationError = true;
+            bookTitleValidationBinding.Mode = BindingMode.TwoWay;
+            bookTitleValidationBinding.UpdateSourceTrigger =
+           UpdateSourceTrigger.PropertyChanged;
+            //Este necesar ca string-ul sa aiba minim 4 caractere
+            bookTitleValidationBinding.ValidationRules.Add(new StringMinLengthValidator());
+            booktitleTextBox.SetBinding(TextBox.TextProperty,
+           bookTitleValidationBinding);
+
+            //Validarea campului Author
+
+            Binding authorValidationBinding = new Binding();
+            authorValidationBinding.Source = inventoryViewSource;
+            authorValidationBinding.Path = new PropertyPath("Author");
+            authorValidationBinding.NotifyOnValidationError = true;
+            authorValidationBinding.Mode = BindingMode.TwoWay;
+            authorValidationBinding.UpdateSourceTrigger =
+           UpdateSourceTrigger.PropertyChanged;
+            //Este necesar ca string-ul sa aiba minim 4 caractere
+            authorValidationBinding.ValidationRules.Add(new StringMinLengthValidator());
+            authorTextBox.SetBinding(TextBox.TextProperty,
+           authorValidationBinding);
+
+            //Validarea campului PublishingYear
+
+            Binding publishingYearValidationBinding = new Binding();
+            publishingYearValidationBinding.Source = inventoryViewSource;
+            publishingYearValidationBinding.Path = new PropertyPath("PublishingYear");
+            publishingYearValidationBinding.NotifyOnValidationError = true;
+            publishingYearValidationBinding.Mode = BindingMode.TwoWay;
+            publishingYearValidationBinding.UpdateSourceTrigger =
+           UpdateSourceTrigger.PropertyChanged;
+            //Este necesar ca string-ul sa aiba minim 4 caractere
+            publishingYearValidationBinding.ValidationRules.Add(new StringMinLengthValidator());
+            publishingyearTextBox.SetBinding(TextBox.TextProperty,
+           publishingYearValidationBinding);
         }
 
     }
