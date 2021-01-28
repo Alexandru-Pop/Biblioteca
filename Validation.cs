@@ -34,8 +34,8 @@ namespace Biblioteca
         public override ValidationResult Validate(object value, System.Globalization.CultureInfo cultureinfo)
         {
             string aString = value.ToString();
-            if (aString.Length < 4)
-                return new ValidationResult(false, "String-urile introduse trebuie sa aiba minim 4 caractere!");
+            if (aString.Length < 3)
+                return new ValidationResult(false, "String-urile introduse trebuie sa aiba minim 3 caractere!");
         return new ValidationResult(true, null);
         }
     }

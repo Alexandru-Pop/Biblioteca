@@ -141,8 +141,10 @@
                                 <Style.Triggers>
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding ElementName=firstNameTextBox, Path=(Validation.HasError)}" Value="false" />
                                             <Condition Binding="{Binding ElementName=lastNameTextBox, Path=(Validation.HasError)}" Value="false" />
-
+                                            <Condition Binding="{Binding ElementName=ageTextBox, Path=(Validation.HasError)}" Value="false" />
+                                            <Condition Binding="{Binding ElementName=universityTextBox, Path=(Validation.HasError)}" Value="false" />
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="IsEnabled" Value="true" />
                                     </MultiDataTrigger>

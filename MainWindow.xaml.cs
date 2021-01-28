@@ -100,6 +100,8 @@ namespace Biblioteca
 
             BindingOperations.ClearBinding(firstNameTextBox, TextBox.TextProperty);
             BindingOperations.ClearBinding(lastNameTextBox, TextBox.TextProperty);
+            BindingOperations.ClearBinding(ageTextBox, TextBox.TextProperty);
+            BindingOperations.ClearBinding(universityTextBox, TextBox.TextProperty);
             SetValidationBinding();
         }
 
@@ -164,6 +166,7 @@ namespace Biblioteca
             }
             else if (action == ActionState.Edit)
             {
+                SetValidationBinding();
                 MessageBox.Show("Se editeaza inregistrarea.");
                 try
                 {
@@ -434,7 +437,7 @@ namespace Biblioteca
 
 
 
-            //Continuam cu validarea campurilor FirstName, LastName, University, BookTitle, Author, Publishing Year (string-urile introduse trebuie sa aiba minim 4 caractere)
+            //Continuam cu validarea campurilor FirstName, LastName, University, BookTitle, Author, Publishing Year (string-urile introduse trebuie sa aiba minim 3 caractere)
 
             //Validarea campului FirstName
 
